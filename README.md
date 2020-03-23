@@ -50,7 +50,7 @@ sudo python3 examples/display_terminal.py
 
 Example output:
 
-![demo_terminal_display.gif](examples/images/demo_terminal_display.gif)
+![demo_terminal_display.gif](examples/images/16x16.gif)
 
 > RGB colours become red, green, blue, cyan, magenta, yellow, black or white 
 
@@ -219,11 +219,23 @@ sudo python3
 ```python
 from generic import Generic  # assumes above generic.py file is in current dir
 from matrix_display import Conveyor
+import row_functions as f  # assumes row_functions.py is in current dir
 
 conveyor = Conveyor(Generic(32, 64, 25, 'Rotate:180'))
-conveyor.add_row('Hello, World!')
+conveyor.add_row(f.get_random_canvas_block, 0.5, 64, 6)
+conveyor.add_row('The quick brown fox jumps over the lazy dog')
+conveyor.add_row(f.get_random_canvas_block, 5, 96, 5)
+conveyor.add_row([('Hello, ', (255, 0, 0)), ('World!', (0, 255, 0))])
+conveyor.add_row(f.get_seconds_text_tuple, 0.25)
+conveyor.add_row(f.get_random_canvas_block, 0.25, 64, 6)
 conveyor.play()
 ```
+
+The display driver can be switched from Generic to Terminal to capture output: 
+
+![32x64.gif](examples/images/32x64.gif)
+
+> The Terminal display driver interprets most random pixel colours as white
 
 # Appendices
 
