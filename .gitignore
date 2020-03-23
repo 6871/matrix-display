@@ -1,4 +1,10 @@
 .DS_Store
 .idea
 *.iml
+build
+dist
+src/matrix_display.egg-info
 tmp
+venv
+examples/__pycache__
+src/matrix_display/__pycache__
